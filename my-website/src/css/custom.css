@@ -1,0 +1,28 @@
+/* Dark theme button */
+.button, .btn {
+  background-color: #ffffff; /* white background */
+  color: #000000; /* black text */
+  border-radius: 8px;
+  padding: 0.6em 1.2em;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.button:hover, .btn:hover {
+  background-color: rgba(255,255,255,0.8); /* slightly lighter white */
+  color: #000000; /* text stays black */
+  transform: translateY(-2px); /* subtle hover lift */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+/* Heading: remove hover effect */
+h1, h2, h3 {
+  color: #faf9fc; /* purple/indigo color */
+  transition: none; /* disable hover effect */
+}
+
+h1:hover, h2:hover, h3:hover {
+  color: #f4f3f5; /* no change on hover */
+}

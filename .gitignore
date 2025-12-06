@@ -1,0 +1,27 @@
+# Gitignore for Physical AI & Humanoid Robotics Textbook Project
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+dist/
+*.egg-info/
+.pytest_cache/
+
+# Node.js/Docusaurus
+node_modules/
+build/
+.docusaurus/
+.cache/
+*.log
+.env*
+coverage/
+
+# IDE and OS specific
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.tmp
+*.swp
