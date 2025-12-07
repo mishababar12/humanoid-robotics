@@ -18,7 +18,7 @@ const config: Config = {
   url: 'https://mishababar12.github.io',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/humanoid-robotics/',
+  baseUrl: process.env.VERCEL_BASE_URL || '/humanoid-robotics/',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
@@ -44,7 +44,7 @@ const config: Config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/github/my-hackathone-project/tree/main/my-website',
+            'https://github.com/mishababar12/humanoid-robotics/tree/main/my-website',
         },
         blog: {
           showReadingTime: true,
@@ -55,7 +55,7 @@ const config: Config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/github/my-hackathone-project/tree/main/my-website',
+            'https://github.com/mishababar12/humanoid-robotics/tree/main/my-website',
           // Useful options to enforce blogging best practices
           onInlineTags: 'warn',
           onInlineAuthors: 'warn',
@@ -89,7 +89,7 @@ const config: Config = {
         },
         {to: '/blog', label: 'Blog', position: 'left'},
         {
-          href: 'https://github.com/github/my-hackathone-project',
+          href: 'https://github.com/mishababar12/humanoid-robotics',
           label: 'GitHub',
           position: 'right',
         },
@@ -134,7 +134,7 @@ const config: Config = {
             },
             {
               label: 'GitHub',
-              href: 'https://github.com/github/my-hackathone-project',
+              href: 'https://github.com/mishababar12/humanoid-robotics',
             },
           ],
         },
