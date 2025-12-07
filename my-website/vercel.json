@@ -1,4 +1,0 @@
-{
-  "buildCommand": "BASE_URL=/ npm run build",
-  "outputDirectory": "build"
-}
