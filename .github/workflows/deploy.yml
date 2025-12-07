@@ -19,16 +19,16 @@ jobs:
           
       - name: Install dependencies
         run: npm install
-        working-directory: ./my-website  # ✅ Yeh line IMPORTANT hai
+        working-directory: ${{ github.workspace }}/my-website  # ✅ Gemini ka version rakh lo
           
       - name: Build
         run: npm run build
-        working-directory: ./my-website  # ✅ Yeh line IMPORTANT hai
+        working-directory: ${{ github.workspace }}/my-website  # ✅ Gemini ka version rakh lo
           
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./my-website/build  # ✅ Yahan bhi path change karo
+          publish_dir: ${{ github.workspace }}/my-website/build  # ✅ Gemini ka version
           user_name: 'github-actions[bot]'
           user_email: 'github-actions[bot]@users.noreply.github.com'
