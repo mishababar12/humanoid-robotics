@@ -85,7 +85,7 @@ const config: Config = {
           type: 'docSidebar',
           sidebarId: 'tutorialSidebar',
           position: 'left',
-          label: 'Tutorial',
+          label: 'Textbook',
         },
         {to: '/blog', label: 'Blog', position: 'left'},
         {
@@ -100,10 +100,10 @@ const config: Config = {
       style: 'dark',
       links: [
         {
-          title: 'Docs',
+          title: 'Textbook',
           items: [
             {
-              label: 'Tutorial',
+              label: 'Textbook',
               to: '/docs/intro',
             },
           ],

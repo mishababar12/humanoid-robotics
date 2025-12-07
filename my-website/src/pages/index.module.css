@@ -12,11 +12,63 @@
   }
 }
 .heroTitle {
-  margin-bottom: 3rem;
+  font-size: 3.5rem; /* Increased font size */
+  margin-bottom: 2rem; /* Adjusted spacing */
+}
+/* Ensure subtitle/tagline spacing */
+.hero__subtitle {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
 }
 
 .buttons {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+/* New styles for two-column hero layout */
+.heroContainer {
+  display: flex;
+  flex-direction: row; /* Default to row for desktop */
+  align-items: center;
+  justify-content: space-between;
+  text-align: left; /* Align text content to left within its column */
+}
+
+.heroText {
+  flex: 1; /* Allows text to grow and shrink */
+  padding-right: 2rem; /* Spacing between text and image */
+}
+
+.heroImage {
+  flex: 1; /* Allows image container to grow and shrink */
+  display: flex; /* Use flex to center image vertically */
+  align-items: center;
+  justify-content: center;
+  padding-left: 2rem; /* Spacing between image and text */
+}
+
+.heroImage img {
+  max-width: 100%; /* Ensure image fits its container */
+  height: auto;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 996px) {
+  .heroContainer {
+    flex-direction: column; /* Stack text and image vertically on smaller screens */
+    text-align: center; /* Center content when stacked */
+  }
+  .heroText, .heroImage {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .heroImage {
+    margin-top: 2rem; /* Space between stacked elements */
+  }
+  /* Center buttons on smaller screens if they were left-aligned on desktop */
+  .buttons {
+    justify-content: center;
+  }
 }
