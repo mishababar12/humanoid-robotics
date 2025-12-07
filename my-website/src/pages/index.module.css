@@ -12,8 +12,9 @@
   }
 }
 .heroTitle {
-  font-size: 3.5rem; /* Increased font size */
-  margin-bottom: 2rem; /* Adjusted spacing */
+  font-size: 3.5rem; 
+  margin-right: 1rem; /* Spacing between title and button */
+  margin-bottom: 3rem; /* Remove vertical space if aligned horizontally */
 }
 /* Ensure subtitle/tagline spacing */
 .hero__subtitle {
@@ -21,10 +22,18 @@
   margin-bottom: 2rem;
 }
 
+/* New wrapper for heading and buttons */
+.heroContent {
+  display: flex;
+  align-items: center; /* Align items vertically in the center */
+  flex-wrap: wrap; /* Allow wrapping on smaller screens */
+  margin-bottom: 2rem; /* Add some space below this row */
+}
+
 .buttons {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start; /* Align buttons to the start (left) */
 }
 
 /* New styles for two-column hero layout */
