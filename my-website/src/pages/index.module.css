@@ -1,33 +1,57 @@
 /** * CSS files with the .module.css suffix will be treated as CSS modules * and scoped locally. */
 .heroBanner {
-  padding: 8rem 0;
+  padding: 4rem 0;
   text-align: center;
   position: relative;
   overflow: hidden;
+  background: linear-gradient(135deg, #764ba2 0%, #667eea 50%, #764ba2 100%);
+  animation: gradientShift 8s ease infinite;
+  background-size: 200% 200%;
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 @media screen and (max-width: 996px) {
   .heroBanner {
-    padding: 8rem;
+    padding: 4rem 2rem;
   }
 }
 .heroTitle {
-  font-size: 3.5rem; 
-  margin-right: 1rem; /* Spacing between title and button */
-  margin-bottom: 3rem; /* Remove vertical space if aligned horizontally */
+  font-size: 3.5rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+  color: white;
+  transition: none !important;
 }
-/* Ensure subtitle/tagline spacing */
-.hero__subtitle {
-  font-size: 1.5rem;
+
+.heroTitle:hover {
+  color: white !important;
+}
+
+.heroSubtitle {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.9);
   margin-bottom: 2rem;
+  max-width: 600px;
 }
 
 /* New wrapper for heading and buttons */
 .heroContent {
   display: flex;
-  align-items: center; /* Align items vertically in the center */
-  flex-wrap: wrap; /* Allow wrapping on smaller screens */
-  margin-bottom: 2rem; /* Add some space below this row */
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
 }
 
 .buttons {
@@ -46,8 +70,10 @@
 }
 
 .heroText {
-  flex: 1; /* Allows text to grow and shrink */
-  padding-right: 2rem; /* Spacing between text and image */
+  flex: 1;
+  padding-right: 3rem;
+  display: flex;
+  align-items: center;
 }
 
 .heroImage {
@@ -59,8 +85,15 @@
 }
 
 .heroImage img {
-  max-width: 100%; /* Ensure image fits its container */
+  max-width: 100%;
   height: auto;
+  filter: drop-shadow(0 10px 30px rgba(118, 75, 162, 0.4));
+}
+
+.heroImage img:hover {
+  filter: drop-shadow(0 15px 40px rgba(102, 126, 234, 0.6));
+  transform: scale(1.02);
+  transition: all 0.3s ease;
 }
 
 /* Responsive adjustments */

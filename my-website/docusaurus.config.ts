@@ -7,23 +7,25 @@ import type * as Preset from '@docusaurus/preset-classic';
 const config: Config = {
   title: 'Physical AI & Humanoid Robotics',
   tagline: 'Technical Textbook',
-  favicon: 'img/favicon.ico',
+  favicon: 'img/favicon-robot.svg',
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
-  future: {
-    v4: true, // Improve compatibility with the upcoming Docusaurus v4
-  },
+  // future: {
+  //   v4: true, // Improve compatibility with the upcoming Docusaurus v4
+  // },
 
   // Set the production url of your site here
   url: 'https://mishababar12.github.io',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: process.env.VERCEL_BASE_URL || '/humanoid-robotics/',
+  // Use different base URL for local development vs production
+  baseUrl: process.env.NODE_ENV === 'development' ? '/' : '/humanoid-robotics/',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
   organizationName: 'mishababar12', // Usually your GitHub org/user name.
   projectName: 'humanoid-robotics', // Usually your repo name.
+  trailingSlash: false,
 
   onBrokenLinks: 'throw',
 
@@ -119,10 +121,6 @@ const config: Config = {
               label: 'Discord',
               href: 'https://discordapp.com/invite/docusaurus',
             },
-            {
-              label: 'X',
-              href: 'https://x.com/docusaurus',
-            },
           ],
         },
         {
@@ -146,22 +144,31 @@ const config: Config = {
       theme: prismThemes.github,
       darkTheme: prismThemes.dracula,
     },
+
+    // Custom fields for our application
+    backendUrl: process.env.BACKEND_URL || 'http://localhost:8000',
   } satisfies Preset.ThemeConfig,
 
+  // Inject environment variables to the browser
   customFields: {
-    devServer: {
-      proxy: {
-        '/api/chat': {
-          target: 'http://localhost:8000',
-          pathRewrite: {'^/api/chat': '/chat'},
-        },
-        '/api/auth': {
-          target: 'http://localhost:8001',
-          pathRewrite: {'^/api/auth': ''},
-        },
-      },
-    },
+    backendUrl: process.env.BACKEND_URL || 'http://localhost:8000',
   },
+
+  // Client modules to run in the browser
+  clientModules: [
+    './src/components/RagChatbot/backend-url-injector.js',
+  ],
+
+  plugins: [
+    [
+      '@docusaurus/plugin-client-redirects',
+      {
+        fromExtensions: ['html'],
+        toExtensions: ['html'],
+      },
+    ],
+  ],
+  themes: ['@docusaurus/theme-live-codeblock'],
 };
 
 export default config;

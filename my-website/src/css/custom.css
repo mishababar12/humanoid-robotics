@@ -17,12 +17,22 @@
   box-shadow: 0 4px 12px rgba(0,0,0,0.2);
 }
 
-/* Heading: remove hover effect */
-h1, h2, h3 {
-  color: #faf9fc; /* purple/indigo color */
-  transition: none; /* disable hover effect */
+/* Heading colors for dark and light mode */
+[data-theme='dark'] h1,
+[data-theme='dark'] h2,
+[data-theme='dark'] h3 {
+  color: #faf9fc; /* light color for dark mode */
+  transition: none !important;
+}
+
+[data-theme='light'] h1,
+[data-theme='light'] h2,
+[data-theme='light'] h3 {
+  color: #000000; /* black color for light mode */
+  transition: none !important;
 }
 
 h1:hover, h2:hover, h3:hover {
-  color: #f4f3f5; /* no change on hover */
+  color: inherit !important;
+  transform: none !important;
 }

@@ -5,8 +5,7 @@ import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
 import HomepageFeatures from '@site/src/components/HomepageFeatures';
 import Heading from '@theme/Heading';
-import HeroImage from '@site/static/img/hero-robot-placeholder.svg'; // New import
-import RobotHeroImage from '@site/static/img/robot-hero.jpeg'; // New import
+// Using online robot image
 
 
 import styles from './index.module.css';
@@ -17,10 +16,13 @@ function HomepageHeader() {
     <header className={clsx('hero hero--primary', styles.heroBanner)}>
               <div className={clsx('container', styles.heroContainer)}>
                 <div className={styles.heroText}>
-                  <div className={styles.heroContent}> {/* New wrapper for heading and buttons */}
+                  <div className={styles.heroContent}>
                     <Heading as="h1" className={styles.heroTitle}>
-                      {siteConfig.title}
+                      Physical AI & Humanoid Robotics
                     </Heading>
+                    <p className={styles.heroSubtitle}>
+                      Master the future of intelligent machines. Learn ROS2, motion planning, computer vision, and LLM-powered robotics to build real-world AI systems that think, move, and interact.
+                    </p>
                     <div className={styles.buttons}>
                       <Link
                         className="button button--secondary button--lg"
@@ -31,7 +33,11 @@ function HomepageHeader() {
                   </div>
                 </div>
                 <div className={styles.heroImage}>
-                  <img src={RobotHeroImage} alt="Physical AI Robot" /> {/* Updated src */}
+                  <img
+                    src="/img/animated-robot.svg"
+                    alt="Animated AI Robot"
+                    className={styles.heroRobotImage}
+                  />
                 </div>
               </div>
     </header>
@@ -42,7 +48,7 @@ export default function Home(): ReactNode {
   const {siteConfig} = useDocusaurusContext();
   return (
     <Layout
-      title={`Hello from ${siteConfig.title}`}
+      title={`Hello from ${String(siteConfig?.title || 'Physical AI')}`}
       description="Description will go into a meta tag in <head />">
       <HomepageHeader />
       <main>
