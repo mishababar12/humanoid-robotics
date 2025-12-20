@@ -1,106 +1,59 @@
-# RAG Chatbot Backend
+---
+title: RAG Chatbot Backend
+emoji: 🤖
+colorFrom: blue
+colorTo: purple
+sdk: docker
+app_port: 7860
+pinned: false
+---
+
+# RAG Chatbot Backend API
 
 This is the backend service for the Retrieval-Augmented Generation (RAG) chatbot that integrates with the Docusaurus-deployed book.
 
-## Architecture
+## Features
 
-The backend is built with FastAPI and includes:
-
-- **Content Ingestion**: Extracts content from Docusaurus docs, chunks it, and generates embeddings
-- **Vector Database**: Uses Qdrant Cloud for efficient semantic search
-- **AI Integration**: Uses Cohere for embeddings and response generation
-- **Session Management**: Tracks conversation history and user sessions
-- **API Layer**: Provides RESTful endpoints for the frontend
-
-## Components
-
-### Ingestion Pipeline
-- `ingestion/extractor.py`: Extracts content from Docusaurus markdown files
-- `ingestion/chunker.py`: Chunks content into semantic boundaries
-- `ingestion/embedder.py`: Generates embeddings using Cohere API
-- `ingestion/pipeline.py`: Orchestrates the full ingestion process
-
-### Services
-- `services/search_service.py`: Handles semantic search functionality
-- `services/generation_service.py`: Generates responses using Cohere
-- `services/context_service.py`: Manages text selection and conversation context
-- `services/session_service.py`: Manages user sessions and history
-
-### Database Layer
-- `database/postgres.py`: PostgreSQL integration for session management
-- `database/qdrant.py`: Vector database operations
-
-### API Layer
-- `app/api/chat.py`: Main chat and search endpoints
-- `app/api/health.py`: Health check endpoints
-- `app/main.py`: FastAPI application entry point
-
-## Setup
-
-1. Install dependencies:
-```bash
-pip install -r requirements.txt
-```
-
-2. Set up environment variables:
-```bash
-cp .env.example .env
-# Edit .env with your API keys and configuration
-```
-
-3. Run the content indexing pipeline:
-```bash
-python scripts/index_content.py
-```
-
-4. Start the server:
-```bash
-python -m app.main
-```
+- **FastAPI** backend with automatic API documentation
+- **Cohere** for embeddings and text generation
+- **Qdrant Cloud** for vector search
+- **Neon Postgres** for session management
+- **Docker** containerized deployment
 
 ## API Endpoints
 
-- `POST /api/chat` - Main chat endpoint
-- `POST /api/search` - Standalone search endpoint
-- `GET /api/health` - Health check
-- `GET /api/ready` - Readiness check
-- `POST /api/session` - Create session
-- `DELETE /api/session/{session_id}` - Clear session
+- `GET /health` - Health check
+- `GET /docs` - Interactive API documentation
+- `POST /api/chat` - Chat with the AI assistant
+- `POST /api/search` - Search through book content
 
 ## Environment Variables
 
-- `COHERE_API_KEY`: Your Cohere API key
-- `QDRANT_URL`: URL for your Qdrant Cloud instance
-- `QDRANT_API_KEY`: API key for Qdrant Cloud (if required)
-- `DATABASE_URL`: Connection string for PostgreSQL database
-- `NEON_DB_URL`: Connection string for Neon Postgres (if different)
-- `REDIS_URL`: Redis connection string (optional)
-- `DEBUG`: Set to "true" for debug mode
+This Space requires the following secrets to be configured:
 
-## Running the Service
+- `COHERE_API_KEY` - Your Cohere API key
+- `QDRANT_URL` - Qdrant cluster URL
+- `QDRANT_API_KEY` - Qdrant API key
+- `NEON_DB_URL` - Neon Postgres connection string
+- `DATABASE_URL` - Same as NEON_DB_URL
+- `DEBUG` - Set to "false" for production
+- `ALLOWED_ORIGINS` - CORS allowed origins (e.g., https://your-site.github.io)
 
-```bash
-# Install dependencies
-pip install -r requirements.txt
+## Usage
 
-# Index the book content
-python scripts/index_content.py
+Once deployed, the API will be available at:
+- Base URL: `https://your-username-space-name.hf.space`
+- API Docs: `https://your-username-space-name.hf.space/docs`
 
-# Start the API server
-python -m app.main
-```
+## Tech Stack
 
-The API will be available at `http://localhost:8000` with documentation at `http://localhost:8000/docs`.
+- Python 3.10
+- FastAPI + Uvicorn
+- Cohere AI
+- Qdrant Vector Database
+- PostgreSQL (Neon)
+- Docker
 
-## Testing
+## License
 
-Run the indexing script to load your book content into the vector database, then test the API endpoints. The chat endpoint expects:
-
-```json
-{
-  "message": "Your question here",
-  "selected_text": "Optional selected text for context",
-  "session_id": "Optional session ID",
-  "context": "general or selected_text"
-}
-```
+Apache 2.0
