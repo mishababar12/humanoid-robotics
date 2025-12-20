@@ -1,5 +1,5 @@
 from pydantic_settings import BaseSettings
-from typing import Optional
+from typing import Optional, List
 
 
 class Settings(BaseSettings):
@@ -16,6 +16,16 @@ class Settings(BaseSettings):
     app_name: str = "RAG Chatbot API"
     version: str = "1.0.0"
     api_prefix: str = "/api"
+
+    # CORS Settings
+    allowed_origins: str = "*"  # Comma-separated list in production
+
+    @property
+    def cors_origins(self) -> List[str]:
+        """Parse comma-separated origins into list"""
+        if self.allowed_origins == "*":
+            return ["*"]
+        return [origin.strip() for origin in self.allowed_origins.split(",")]
 
     # Qdrant Configuration
     qdrant_collection_name: str = "book_content"
