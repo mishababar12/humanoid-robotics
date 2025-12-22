@@ -109,8 +109,15 @@
   .heroImage {
     margin-top: 2rem; /* Space between stacked elements */
   }
-  /* Center buttons on smaller screens if they were left-aligned on desktop */
+  /* Center all content including buttons on mobile */
+  .heroContent {
+    align-items: center;
+  }
+  .heroSubtitle {
+    text-align: center;
+  }
   .buttons {
     justify-content: center;
+    width: 100%;
   }
 }
