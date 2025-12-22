@@ -7,7 +7,7 @@ if (typeof window !== 'undefined') {
   // The backend URL is passed through Docusaurus customFields
   const backendUrl = window.location.hostname === 'localhost'
     ? 'http://localhost:8000'  // Use port 8000 for local development
-    : 'https://site.vercel.app'; // Use production URL for production
+    : 'https://mishababar-rag-chatbot-backend.hf.space'; // Hugging Face Spaces production URL
 
   window.BACKEND_URL = backendUrl;
   console.log('Backend URL injected:', backendUrl);
